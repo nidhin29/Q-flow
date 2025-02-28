@@ -21,7 +21,7 @@ class BookFieldWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(title,
-            style: GoogleFonts.ptSans(
+            style: GoogleFonts.dmSans(
                 textStyle: TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: 16.sp,
@@ -50,7 +50,7 @@ class BookFieldWidget extends StatelessWidget {
           value: selectedDepartment.value,
           hint: Text(
             'Select',
-            style: GoogleFonts.ptSans(
+            style: GoogleFonts.dmSans(
                 textStyle:
                     TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w400)),
           ),

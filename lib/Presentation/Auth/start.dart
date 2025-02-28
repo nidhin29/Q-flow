@@ -40,9 +40,9 @@ class StartPage extends StatelessWidget {
             Text(
               'Get your ticket you want and save\nyour time easily',
               textAlign: TextAlign.center,
-              style: GoogleFonts.ptSans(
+              style: GoogleFonts.dmSans(
                   fontSize: 17.sp,
-                  fontWeight: FontWeight.w400,
+                  fontWeight: FontWeight.w500,
                   color: Colors.black),
             ),
             kheight20,
@@ -52,8 +52,9 @@ class StartPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                AuthButtonWidget(
-                  title: 'Sign In',
+                ToggleAuthButtonWidget(
+                  'Sign In',
+                  title: 'Log In',
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const SignInScreen()));
@@ -63,10 +64,13 @@ class StartPage extends StatelessWidget {
                 kwidth5,
                 kwidth5,
                 kwidth5,
-                AuthButtonWidget(title: 'Sign Up', onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const SignUpScreen()));
-                })
+                ToggleAuthButtonWidget(
+                  'Sign Up',
+                    title: 'Sign Up',
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const SignUpScreen()));
+                    })
               ],
             )
           ],

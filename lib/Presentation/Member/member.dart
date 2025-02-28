@@ -248,7 +248,7 @@ class MemberScreen extends StatelessWidget {
                                           ),
                                         ),
                                         Text('Kallishery',
-                                            style: GoogleFonts.ptSans(
+                                            style: GoogleFonts.dmSans(
                                                 textStyle: TextStyle(
                                               fontWeight: FontWeight.w700,
                                               fontSize: 13.sp,
@@ -302,7 +302,7 @@ class MemberScreen extends StatelessWidget {
                                                 children: [
                                                   Text(
                                                     'Get Your Ticket Here',
-                                                    style: GoogleFonts.ptSans(
+                                                    style: GoogleFonts.dmSans(
                                                       textStyle: TextStyle(
                                                         color: const Color
                                                             .fromRGBO(
@@ -339,6 +339,7 @@ class MemberScreen extends StatelessWidget {
               ),
 
               kheight100,
+              kheight20,
               kheight20,
             ],
           ),

@@ -41,7 +41,7 @@ class PageContent extends StatelessWidget {
       builder: (context, selectedIndex, _) {
         return IndexedStack(
           index: selectedIndex,
-          children:  [
+          children: [
             const HomeScreen(),
             MemberScreen(),
             const ProfileScreen(),
@@ -62,11 +62,11 @@ class CustomNavBar extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
-        height: 72.h,
-        width: 280.w,
+        height: 85.h,
+        width: 245.w,
         margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 0),
         decoration: BoxDecoration(
-          color: const Color(0xFFC1C1C1),
+          color: const Color.fromRGBO(79, 79, 79, 0.11),
           borderRadius: BorderRadius.circular(35),
           // boxShadow: const [
           //   BoxShadow(
@@ -80,17 +80,17 @@ class CustomNavBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             NavBarItem(
-              imagePath: 'assets/icon/Vector.png',
+              imagePath: 'assets/icon/ticket.png',
               index: 0,
               notifier: selectedIndexNotifier,
             ),
             NavBarItem(
-              imagePath: 'assets/icon/member.png',
+              imagePath: 'assets/icon/home.png',
               index: 1,
               notifier: selectedIndexNotifier,
             ),
             NavBarItem(
-              imagePath: 'assets/icon/Group.png',
+              imagePath: 'assets/icon/profile.png',
               index: 2,
               notifier: selectedIndexNotifier,
               isCenterIcon: true,
@@ -126,28 +126,42 @@ class NavBarItem extends StatelessWidget {
         return GestureDetector(
           onTap: () => notifier.value = index,
           child: Container(
-            width: 55.w,
-            height: 55.h,
+            width: 70.w,
+            height: 72.h,
             decoration: BoxDecoration(
-              color: isSelected ? const Color(0xFF2A2C29) : null,
-              shape: isSelected ? BoxShape.circle : BoxShape.rectangle,
-              boxShadow: isSelected
-                  ? const [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 8,
-                        offset: Offset(0, 4),
-                      ),
-                    ]
-                  : null,
+              color: !isSelected
+                  ? const Color.fromRGBO(255, 255, 255, 0.22)
+                  : const Color.fromRGBO(253, 253, 253, 1),
+              shape: BoxShape.circle,
+
+              border: BoxBorder.lerp(
+                Border.all(
+                  color: const Color.fromRGBO(247, 247, 247, 1),
+                  width: 0,
+                ),
+                Border.all(
+                  color: Colors.white,
+                  width: 1,
+                ),
+                1,
+              ),
+              // boxShadow: isSelected
+              //     ? const [
+              //         BoxShadow(
+              //           color: Colors.black26,
+              //           blurRadius: 8,
+              //           offset: Offset(0, 4),
+              //         ),
+              //       ]
+              //     : null,
             ),
             child: Center(
               child: SizedBox(
-                width: 35.w,
-                height: 35.h,
+                width: 20.w,
+                height: 22.h,
                 child: Image.asset(
                   imagePath,
-                  color: isSelected ? Colors.white : Colors.white,
+                  color: Colors.black,
                   fit: BoxFit.contain,
                 ),
               ),

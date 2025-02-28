@@ -109,6 +109,7 @@ class BookingPage extends StatelessWidget {
                 ),
               ),
               kheight20,
+              kheight10,
               Container(
                 width: 350.w,
                 height: 339.h,
@@ -122,13 +123,13 @@ class BookingPage extends StatelessWidget {
                       BoxShadow(
                         // ignore: deprecated_member_use
                         color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 3,
-                        blurRadius: 7,
-                        offset: const Offset(0, 5),
+                        spreadRadius: 7,
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
                       ),
                     ]),
               ),
-              kheight10,
+              kheight20,
               Text(
                 'Dr. KM Cherian Institute of Medical Science',
                 style: TextStyle(
@@ -138,18 +139,18 @@ class BookingPage extends StatelessWidget {
                   color: const Color.fromRGBO(39, 39, 39, 1),
                 ),
               ),
-              kheight10,
+              kheight15,
               Text('Kallishery,Alappuzha',
-                  style: GoogleFonts.ptSans(
+                  style: GoogleFonts.dmSans(
                       textStyle: TextStyle(
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.w500,
                     fontSize: 19.sp,
                     color: const Color.fromRGBO(39, 39, 39, 1),
                   ))),
-              kheight10,
+              kheight15,
               Container(
                 width: 350.w,
-                height: 119.h,
+                height: 125.h,
                 decoration: BoxDecoration(
                   color: const Color.fromRGBO(255, 255, 255, 1),
                   borderRadius: BorderRadius.circular(21.r),
@@ -157,30 +158,36 @@ class BookingPage extends StatelessWidget {
                     BoxShadow(
                       // ignore: deprecated_member_use
                       color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 3,
-                      blurRadius: 7,
-                      offset: const Offset(0, 5),
+                      spreadRadius: 7,
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
                     ),
                   ],
                 ),
                 child: Column(
                   children: [
-                    ListTile(
-                      leading: CircleAvatar(
-                        radius: 20.r,
-                        backgroundImage:
-                            const AssetImage('assets/icon/hospital.jpeg'),
-                      ),
-                      title: Text('Receptionist',
-                          style: GoogleFonts.ptSans(
-                              textStyle: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 12.9.sp,
-                            color: const Color.fromRGBO(39, 39, 39, 1),
-                          ))),
-                      trailing: const Icon(
-                        Icons.phone_outlined,
-                        color: Color.fromRGBO(39, 39, 39, 1),
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 1.w, vertical: 5.w),
+                      child: ListTile(
+                        tileColor: const Color.fromRGBO(252, 252, 252, 1),
+                        leading: CircleAvatar(
+                          radius: 20.r,
+                          backgroundImage:
+                              const AssetImage('assets/icon/hospital.jpeg'),
+                        ),
+                        title: Text('Receptionist',
+                            style: GoogleFonts.ptSans(
+                                textStyle: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 12.9.sp,
+                              color: const Color.fromRGBO(39, 39, 39, 1),
+                            ))),
+                        trailing: Image.asset(
+                          'assets/icon/call.png',
+                          color: Colors.black,
+                          scale: 0.9,
+                        ),
                       ),
                     ),
                     kheight20,
@@ -200,88 +207,215 @@ class BookingPage extends StatelessWidget {
               kheight20,
               Container(
                 width: 350.w,
-                height: 441.h,
+                height: 461.h,
                 decoration: BoxDecoration(
                   color: const Color.fromRGBO(255, 255, 255, 1),
-                  borderRadius: BorderRadius.circular(21.r),
+                  borderRadius: BorderRadius.circular(28.r),
                   boxShadow: [
                     BoxShadow(
                       // ignore: deprecated_member_use
                       color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 3,
-                      blurRadius: 7,
-                      offset: const Offset(0, 5),
+                      spreadRadius: 7,
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
                     ),
                   ],
                 ),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 20.h, right: 20.h),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      kheight20,
-                      kheight5,
-                      Text('Book Your Slot',
-                          style: GoogleFonts.ptSans(
-                              textStyle: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 19.sp,
-                            color: const Color.fromRGBO(39, 39, 39, 1),
-                          ))),
-                      kheight10,
-                      BookFieldWidget(
-                        selectedDepartment: selectedDepartment,
-                        title: 'Department',
-                        list: const ['Cardiology', 'Neurology', 'Orthopedics'],
-                      ),
-                      kheight10,
-                      BookFieldWidget(
-                        selectedDepartment: selectedPatient,
-                        title: 'Patient',
-                        list: const ['John', 'Alex', 'Mathew'],
-                      ),
-                      kheight10,
-                      Row(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 20.h, right: 20.h),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Time',
-                                    style: GoogleFonts.ptSans(
-                                        textStyle: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 16.sp,
-                                      color:
-                                          const Color.fromRGBO(39, 39, 39, 1),
-                                    ))),
-                                Container(
-                                  width: 130.w,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
+                          kheight20,
+                          kheight5,
+                          kheight10,
+                          Text(
+                            'Book your Slot',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'TestSohne',
+                              fontSize: 19.sp,
+                              color: const Color.fromRGBO(39, 39, 39, 1),
+                            ),
+                          ),
+                          kheight20,
+                          BookFieldWidget(
+                            selectedDepartment: selectedDepartment,
+                            title: 'Department',
+                            list: const [
+                              'Cardiology',
+                              'Neurology',
+                              'Orthopedics'
+                            ],
+                          ),
+                          kheight10,
+                          BookFieldWidget(
+                            selectedDepartment: selectedPatient,
+                            title: 'Patient',
+                            list: const ['John', 'Alex', 'Mathew'],
+                          ),
+                          kheight10,
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('Time',
+                                        style: GoogleFonts.dmSans(
+                                            textStyle: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 16.sp,
+                                          color: const Color.fromRGBO(
+                                              39, 39, 39, 1),
+                                        ))),
+                                    Container(
+                                      width: 130.w,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: const Color.fromRGBO(
+                                                210, 210, 210, 1)),
+                                        borderRadius: BorderRadius.circular(10),
                                         color: const Color.fromRGBO(
-                                            210, 210, 210, 1)),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color:
-                                        const Color.fromRGBO(246, 246, 246, 1),
+                                            246, 246, 246, 1),
+                                      ),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 16),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          GestureDetector(
+                                            onTap: () async {
+                                              await selectTime(context);
+                                            },
+                                            child: ValueListenableBuilder<
+                                                TimeOfDay>(
+                                              valueListenable: selectedTime,
+                                              builder: (context, value, child) {
+                                                return Row(
+                                                  children: [
+                                                    Text(
+                                                      value.format(context),
+                                                      style: GoogleFonts.dmSans(
+                                                          textStyle: TextStyle(
+                                                              fontSize: 17.sp,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400)),
+                                                    ),
+                                                    const SizedBox(width: 3),
+                                                  ],
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                          Container(
+                                            width: 1.5,
+                                            height: 55,
+                                            color: const Color.fromRGBO(
+                                                210, 210, 210, 1),
+                                          ),
+                                          const SizedBox(width: 12),
+                                          GestureDetector(
+                                            onTap: () {
+                                              // Toggle AM/PM
+                                              if (selectedTime.value.period ==
+                                                  DayPeriod.am) {
+                                                selectedTime.value = TimeOfDay(
+                                                    hour: selectedTime
+                                                            .value.hour +
+                                                        12,
+                                                    minute: selectedTime
+                                                        .value.minute);
+                                              } else {
+                                                selectedTime.value = TimeOfDay(
+                                                    hour: selectedTime
+                                                            .value.hour -
+                                                        12,
+                                                    minute: selectedTime
+                                                        .value.minute);
+                                              }
+                                            },
+                                            child: ValueListenableBuilder<
+                                                TimeOfDay>(
+                                              valueListenable: selectedTime,
+                                              builder: (context, value, child) {
+                                                return Text(
+                                                  value.period == DayPeriod.am
+                                                      ? "AM"
+                                                      : "PM",
+                                                  style: GoogleFonts.dmSans(
+                                                      textStyle: TextStyle(
+                                                          fontSize: 14.sp,
+                                                          fontWeight:
+                                                              FontWeight.w400)),
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(width: 16),
+                              Expanded(
+                                  child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 10.w),
+                                    child: Text('Date',
+                                        style: GoogleFonts.dmSans(
+                                            textStyle: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 16.sp,
+                                          color: const Color.fromRGBO(
+                                              39, 39, 39, 1),
+                                        ))),
                                   ),
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 16),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Expanded(
-                                        child: GestureDetector(
-                                          onTap: () async {
-                                            await selectTime(context);
-                                          },
-                                          child:
-                                              ValueListenableBuilder<TimeOfDay>(
-                                            valueListenable: selectedTime,
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 10.w),
+                                    child: InkWell(
+                                      onTap: () => selectDate(context),
+                                      child: InputDecorator(
+                                        decoration: InputDecoration(
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: const BorderSide(
+                                                  color: Color.fromRGBO(
+                                                      210, 210, 210, 1)),
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(8.77.r)),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: const BorderSide(
+                                                  color: Color.fromRGBO(
+                                                      210, 210, 210, 1)),
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(8.77.r)),
+                                            ),
+                                            border: OutlineInputBorder(
+                                              borderSide: const BorderSide(
+                                                  color: Color.fromRGBO(
+                                                      210, 210, 210, 1)),
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(8.77.r)),
+                                            ),
+                                            fillColor: const Color.fromRGBO(
+                                                246, 246, 246, 1),
+                                            filled: true),
+                                        child: Container(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8),
+                                          child: ValueListenableBuilder(
+                                            valueListenable: selectedDate,
                                             builder: (context, value, child) {
                                               return Text(
-                                                value.format(context),
-                                                style: GoogleFonts.ptSans(
+                                                "${value.day}/${value.month}/${value.year}",
+                                                style: GoogleFonts.dmSans(
                                                     textStyle: TextStyle(
                                                         fontSize: 19.sp,
                                                         fontWeight:
@@ -291,151 +425,39 @@ class BookingPage extends StatelessWidget {
                                           ),
                                         ),
                                       ),
-                                      Container(
-                                        width: 1.5,
-                                        height: 55,
-                                        color: const Color.fromRGBO(
-                                            210, 210, 210, 1),
-                                      ),
-                                      const SizedBox(width: 12),
-                                      GestureDetector(
-                                        onTap: () {
-                                          // Toggle AM/PM
-                                          if (selectedTime.value.period ==
-                                              DayPeriod.am) {
-                                            selectedTime.value = TimeOfDay(
-                                                hour: selectedTime.value.hour +
-                                                    12,
-                                                minute:
-                                                    selectedTime.value.minute);
-                                          } else {
-                                            selectedTime.value = TimeOfDay(
-                                                hour: selectedTime.value.hour -
-                                                    12,
-                                                minute:
-                                                    selectedTime.value.minute);
-                                          }
-                                        },
-                                        child:
-                                            ValueListenableBuilder<TimeOfDay>(
-                                          valueListenable: selectedTime,
-                                          builder: (context, value, child) {
-                                            return Text(
-                                              value.period == DayPeriod.am
-                                                  ? "AM"
-                                                  : "PM",
-                                              style: GoogleFonts.ptSans(
-                                                  textStyle: TextStyle(
-                                                      fontSize: 16.sp,
-                                                      fontWeight:
-                                                          FontWeight.w400)),
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(width: 16),
-                          Expanded(
-                              child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(left: 10.w),
-                                child: Text('Date',
-                                    style: GoogleFonts.ptSans(
-                                        textStyle: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 16.sp,
-                                      color:
-                                          const Color.fromRGBO(39, 39, 39, 1),
-                                    ))),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 10.w),
-                                child: InkWell(
-                                  onTap: () => selectDate(context),
-                                  child: InputDecorator(
-                                    decoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
-                                              color: Color.fromRGBO(
-                                                  210, 210, 210, 1)),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(8.77.r)),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
-                                              color: Color.fromRGBO(
-                                                  210, 210, 210, 1)),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(8.77.r)),
-                                        ),
-                                        border: OutlineInputBorder(
-                                          borderSide: const BorderSide(
-                                              color: Color.fromRGBO(
-                                                  210, 210, 210, 1)),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(8.77.r)),
-                                        ),
-                                        fillColor: const Color.fromRGBO(
-                                            246, 246, 246, 1),
-                                        filled: true),
-                                    child: Container(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8),
-                                      child: ValueListenableBuilder(
-                                        valueListenable: selectedDate,
-                                        builder: (context, value, child) {
-                                          return Text(
-                                            "${value.day}/${value.month}/${value.year}",
-                                            style: GoogleFonts.ptSans(
-                                                textStyle: TextStyle(
-                                                    fontSize: 17.sp,
-                                                    fontWeight:
-                                                        FontWeight.w400)),
-                                          );
-                                        },
-                                      ),
                                     ),
                                   ),
-                                ),
-                              ),
+                                ],
+                              )),
                             ],
-                          )),
+                          ),
+                          kheight20,
                         ],
                       ),
-                      kheight20,
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          minimumSize:
-                              WidgetStateProperty.all(Size(330.w, 52.h)),
-                          backgroundColor:
-                              WidgetStateProperty.all(Colors.black),
-                          overlayColor:
-                              WidgetStateProperty.all(Colors.transparent),
-                          shape: WidgetStateProperty.all(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.r),
-                            ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        minimumSize: WidgetStateProperty.all(Size(330.w, 52.h)),
+                        backgroundColor: WidgetStateProperty.all(Colors.black),
+                        overlayColor:
+                            WidgetStateProperty.all(Colors.transparent),
+                        shape: WidgetStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.2.r),
                           ),
                         ),
-                        child: Text(
-                          'Book Now',
-                          style: GoogleFonts.ptSans(
-                              textStyle: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 18.sp,
-                                  color: Colors.white)),
-                        ),
-                      )
-                    ],
-                  ),
+                      ),
+                      child: Text(
+                        'Book Now',
+                        style: GoogleFonts.ptSans(
+                            textStyle: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 18.sp,
+                                color: Colors.white)),
+                      ),
+                    )
+                  ],
                 ),
               ),
               kheight20,

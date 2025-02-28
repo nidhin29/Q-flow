@@ -64,12 +64,13 @@ flutter:
     - assets/icon/icon.png
     - assets/icon/google.png
     - assets/icon/back.png
-    - assets/icon/Vector.png
-    - assets/icon/member.png
-    - assets/icon/Group.png
+    - assets/icon/profile.png
+    - assets/icon/ticket.png
+    - assets/icon/home.png
     - assets/icon/start.png
     - assets/icon/search.png
     - assets/icon/hospital.jpeg
+    - assets/icon/call.png
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

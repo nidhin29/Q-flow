@@ -19,7 +19,7 @@ class SignInScreen extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(left: 7.w),
-            child: Text('Sign In',
+            child: Text('Log In',
                 style: TextStyle(
                     fontSize: 21.45.sp,
                     fontWeight: FontWeight.w400,

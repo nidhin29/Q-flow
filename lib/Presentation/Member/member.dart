@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qflow/Presentation/Member/booking.dart';
+import 'package:qflow/Presentation/Member/search.dart';
 import 'package:qflow/Presentation/common/file_widget.dart';
 import 'package:qflow/constants/const.dart';
 
 class MemberScreen extends StatelessWidget {
-  MemberScreen({super.key});
-
-  final TextEditingController _searchController = TextEditingController();
+  const MemberScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,132 +37,138 @@ class MemberScreen extends StatelessWidget {
                     child: ValueListenableBuilder<bool>(
                       valueListenable: isSearching,
                       builder: (context, searching, child) {
-                        return AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 300),
-                          transitionBuilder: (widget, animation) =>
-                              SlideTransition(
-                            position: Tween<Offset>(
-                              begin: const Offset(1, 0),
-                              end: Offset.zero,
-                            ).animate(animation),
-                            child: widget,
-                          ),
-                          child: searching
-                              ? TextField(
-                                  cursorColor:
-                                      const Color.fromRGBO(66, 132, 156, 1),
-                                  style: TextStyle(fontSize: 13.sp),
-                                  controller: _searchController,
-                                  decoration: InputDecoration(
-                                    hintText: "Search",
-                                    hintStyle: const TextStyle(
-                                        color: Color.fromRGBO(66, 132, 156, 1)),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10.r),
-                                      borderSide: BorderSide.none,
-                                    ),
-                                    filled: true,
-                                    fillColor: Colors.grey[200],
-                                    suffixIcon: IconButton(
-                                      icon: const Icon(Icons.close,
-                                          size: 22,
-                                          color: Color.fromRGBO(89, 89, 89, 1)),
-                                      onPressed: () {
-                                        isSearching.value = false;
-                                        _searchController.clear();
-                                      },
-                                    ),
-                                  ),
-                                )
-                              : Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Location',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 14.5.sp,
-                                              color: const Color.fromRGBO(
-                                                  89, 89, 89, 1)),
-                                        ),
-                                        TextButton(
-                                          onPressed: () {},
-                                          style: TextButton.styleFrom(
-                                            padding: EdgeInsets.zero,
-                                            minimumSize: Size.zero,
-                                            tapTargetSize: MaterialTapTargetSize
-                                                .shrinkWrap,
-                                            surfaceTintColor: Colors.white,
-                                            overlayColor: const Color.fromRGBO(
-                                                89, 89, 89, 1),
-                                          ),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              Text(
-                                                'Chengannur',
-                                                style: GoogleFonts.ptSans(
-                                                  textStyle: TextStyle(
-                                                    fontWeight: FontWeight.w700,
-                                                    fontSize: 18.57.sp,
-                                                    color: const Color.fromRGBO(
-                                                        66, 132, 156, 1),
-                                                  ),
-                                                ),
-                                              ),
-                                              kwidth5,
-                                              const Icon(
-                                                Icons.arrow_forward_ios,
-                                                color: Color.fromRGBO(
-                                                    89, 89, 89, 1),
-                                                size: 12,
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                          right: 10.w, top: 5.h),
-                                      child: TextButton(
-                                        onPressed: () {
-                                          isSearching.value =
-                                              !isSearching.value;
-                                        },
-                                        style: TextButton.styleFrom(
-                                          padding: EdgeInsets.zero,
-                                          minimumSize: Size.zero,
-                                          tapTargetSize:
-                                              MaterialTapTargetSize.shrinkWrap,
-                                          surfaceTintColor: Colors.white,
-                                          overlayColor: const Color.fromRGBO(
-                                              89, 89, 89, 1),
-                                        ),
-                                        child: Container(
-                                          width: 28.w,
-                                          height: 28.h,
-                                          decoration: const BoxDecoration(
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/icon/search.png"),
-                                              fit: BoxFit.cover,
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Location',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 14.5.sp,
+                                      color:
+                                          const Color.fromRGBO(89, 89, 89, 1)),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).push(PageRouteBuilder(
+                                        pageBuilder: (context, animation,
+                                                secondaryAnimation) =>
+                                            SearchPage(
+                                              label: 'Location',
                                             ),
+                                        transitionsBuilder: (context, animation,
+                                            secondaryAnimation, child) {
+                                          const begin = Offset(1.0, 0.0);
+                                          const end = Offset.zero;
+                                          const curve = Curves.easeInOut;
+
+                                          var tween = Tween(
+                                                  begin: begin, end: end)
+                                              .chain(CurveTween(curve: curve));
+                                          var offsetAnimation =
+                                              animation.drive(tween);
+
+                                          return SlideTransition(
+                                            position: offsetAnimation,
+                                            child: child,
+                                          );
+                                        },
+                                        transitionDuration: const Duration(
+                                            microseconds: 700000)));
+                                  },
+                                  style: TextButton.styleFrom(
+                                    padding: EdgeInsets.zero,
+                                    minimumSize: Size.zero,
+                                    tapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                    surfaceTintColor: Colors.white,
+                                    overlayColor:
+                                        const Color.fromRGBO(89, 89, 89, 1),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        'Chengannur',
+                                        style: GoogleFonts.ptSans(
+                                          textStyle: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 18.57.sp,
+                                            color: const Color.fromRGBO(
+                                                66, 132, 156, 1),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                      kwidth5,
+                                      const Icon(
+                                        Icons.arrow_forward_ios,
+                                        color: Color.fromRGBO(89, 89, 89, 1),
+                                        size: 12,
+                                      )
+                                    ],
+                                  ),
                                 ),
+                              ],
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(right: 10.w, top: 5.h),
+                              child: TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).push(PageRouteBuilder(
+                                      pageBuilder: (context, animation,
+                                              secondaryAnimation) =>
+                                          SearchPage(
+                                            label: 'Search',
+                                          ),
+                                      transitionsBuilder: (context, animation,
+                                          secondaryAnimation, child) {
+                                        const begin = Offset(1.0, 0.0);
+                                        const end = Offset.zero;
+                                        const curve = Curves.easeInOut;
+
+                                        var tween = Tween(
+                                                begin: begin, end: end)
+                                            .chain(CurveTween(curve: curve));
+                                        var offsetAnimation =
+                                            animation.drive(tween);
+
+                                        return SlideTransition(
+                                          position: offsetAnimation,
+                                          child: child,
+                                        );
+                                      },
+                                      transitionDuration: const Duration(
+                                          microseconds: 700000)));
+                                },
+                                style: TextButton.styleFrom(
+                                  padding: EdgeInsets.zero,
+                                  minimumSize: Size.zero,
+                                  tapTargetSize:
+                                      MaterialTapTargetSize.shrinkWrap,
+                                  surfaceTintColor: Colors.white,
+                                  overlayColor:
+                                      const Color.fromRGBO(89, 89, 89, 1),
+                                ),
+                                child: Container(
+                                  width: 28.w,
+                                  height: 28.h,
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                      image:
+                                          AssetImage("assets/icon/search.png"),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         );
                       },
                     ),
@@ -267,6 +271,7 @@ class MemberScreen extends StatelessWidget {
                                                     136,
                                                     153,
                                                     1)
+                                                // ignore: deprecated_member_use
                                                 .withOpacity(0.5),
                                           ),
                                         ),
@@ -276,11 +281,43 @@ class MemberScreen extends StatelessWidget {
                                             const Spacer(),
                                             ElevatedButton(
                                               onPressed: () {
-                                                Navigator.of(context)
-                                                    .push(MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      const BookingPage(),
-                                                ));
+                                                Navigator.of(context).push(
+                                                  PageRouteBuilder(
+                                                      pageBuilder: (context,
+                                                              animation,
+                                                              secondaryAnimation) =>
+                                                          const BookingPage(),
+                                                      transitionsBuilder:
+                                                          (context,
+                                                              animation,
+                                                              secondaryAnimation,
+                                                              child) {
+                                                        const begin =
+                                                            Offset(1.0, 0.0);
+                                                        const end = Offset.zero;
+                                                        const curve =
+                                                            Curves.easeInOut;
+
+                                                        var tween = Tween(
+                                                                begin: begin,
+                                                                end: end)
+                                                            .chain(CurveTween(
+                                                                curve: curve));
+                                                        var offsetAnimation =
+                                                            animation
+                                                                .drive(tween);
+
+                                                        return SlideTransition(
+                                                          position:
+                                                              offsetAnimation,
+                                                          child: child,
+                                                        );
+                                                      },
+                                                      transitionDuration:
+                                                          const Duration(
+                                                              microseconds:
+                                                                  700000)),
+                                                );
                                               },
                                               style: ButtonStyle(
                                                 minimumSize:

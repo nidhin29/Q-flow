@@ -9,19 +9,32 @@ class MainScreen extends StatelessWidget {
 
   static final ValueNotifier<int> _selectedIndexNotifier =
       ValueNotifier<int>(0);
-
+  static final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
-          PageContent(selectedIndexNotifier: _selectedIndexNotifier),
+          PageView(
+            controller: _pageController,
+            onPageChanged: (index) {
+              _selectedIndexNotifier.value = index;
+            },
+            children:const [
+               HomeScreen(),
+              MemberScreen(),
+               ProfileScreen(),
+            ],
+          ),
           Positioned(
             bottom: 15.h,
             left: 0,
             right: 0,
-            child: CustomNavBar(selectedIndexNotifier: _selectedIndexNotifier),
+            child: CustomNavBar(
+              selectedIndexNotifier: _selectedIndexNotifier,
+              pageController: _pageController,
+            ),
           ),
         ],
       ),
@@ -29,33 +42,36 @@ class MainScreen extends StatelessWidget {
   }
 }
 
-class PageContent extends StatelessWidget {
-  final ValueNotifier<int> selectedIndexNotifier;
+// class PageContent extends StatelessWidget {
+//   final ValueNotifier<int> selectedIndexNotifier;
 
-  const PageContent({super.key, required this.selectedIndexNotifier});
+//   const PageContent({super.key, required this.selectedIndexNotifier});
 
-  @override
-  Widget build(BuildContext context) {
-    return ValueListenableBuilder<int>(
-      valueListenable: selectedIndexNotifier,
-      builder: (context, selectedIndex, _) {
-        return IndexedStack(
-          index: selectedIndex,
-          children: [
-            const HomeScreen(),
-            MemberScreen(),
-            const ProfileScreen(),
-          ],
-        );
-      },
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return ValueListenableBuilder<int>(
+//       valueListenable: selectedIndexNotifier,
+//       builder: (context, selectedIndex, _) {
+//         return IndexedStack(
+//           index: selectedIndex,
+//           children: [
+//             const HomeScreen(),
+//             MemberScreen(),
+//             const ProfileScreen(),
+//           ],
+//         );
+//       },
+//     );
+//   }
+// }
 
 class CustomNavBar extends StatelessWidget {
   final ValueNotifier<int> selectedIndexNotifier;
-
-  const CustomNavBar({super.key, required this.selectedIndexNotifier});
+  final PageController pageController;
+  const CustomNavBar(
+      {super.key,
+      required this.selectedIndexNotifier,
+      required this.pageController});
 
   @override
   Widget build(BuildContext context) {
@@ -83,16 +99,19 @@ class CustomNavBar extends StatelessWidget {
               imagePath: 'assets/icon/ticket.png',
               index: 0,
               notifier: selectedIndexNotifier,
+              pageController: pageController,
             ),
             NavBarItem(
               imagePath: 'assets/icon/home.png',
               index: 1,
               notifier: selectedIndexNotifier,
+              pageController: pageController,
             ),
             NavBarItem(
               imagePath: 'assets/icon/profile.png',
               index: 2,
               notifier: selectedIndexNotifier,
+              pageController: pageController,
               isCenterIcon: true,
             ),
           ],
@@ -106,6 +125,7 @@ class NavBarItem extends StatelessWidget {
   final String imagePath;
   final int index;
   final ValueNotifier<int> notifier;
+  final PageController pageController;
   final bool isCenterIcon;
 
   const NavBarItem({
@@ -114,6 +134,7 @@ class NavBarItem extends StatelessWidget {
     required this.index,
     required this.notifier,
     this.isCenterIcon = false,
+    required this.pageController,
   });
 
   @override
@@ -124,7 +145,14 @@ class NavBarItem extends StatelessWidget {
         final bool isSelected = selectedIndex == index;
 
         return GestureDetector(
-          onTap: () => notifier.value = index,
+          onTap: () {
+            notifier.value = index;
+            pageController.animateToPage(
+              index,
+              duration: const Duration(milliseconds: 800),
+              curve: Curves.easeInOut,
+            );
+          },
           child: Container(
             width: 70.w,
             height: 72.h,

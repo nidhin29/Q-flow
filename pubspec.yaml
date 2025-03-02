@@ -36,6 +36,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.0.17
   google_fonts: ^6.2.1
+  intl: ^0.20.2
   wheel_picker: ^0.2.1
 
 dev_dependencies:
@@ -69,7 +70,9 @@ flutter:
     - assets/icon/home.png
     - assets/icon/start.png
     - assets/icon/search.png
+    - assets/icon/search1.png
     - assets/icon/hospital.jpeg
+    - assets/icon/not.png
     - assets/icon/call.png
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
